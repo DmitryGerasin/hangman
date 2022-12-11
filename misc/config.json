@@ -1,6 +1,9 @@
 {
    "showReg": true,
    "showRemainingDictionary": true,
-   "showRemainingDictionaryLength": true,
-   "showBestGuessWeight": true
+   "showRemainingDictionaryLength": false,
+   "showLettersWeightsAfterGuessIsMade": true,
+   "showFinalAnswer": true,
+   "PORT": 8081,
+   "HOSTNAME": "127.0.0.1"
 }

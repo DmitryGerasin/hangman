@@ -30,55 +30,24 @@
  */
 
 
-// Start all timers
-console.time(`Optimal letter found in`)
-console.time(`No more words in the dictionary`)
-console.time(`Final guess`)
-
-// load all things
+const express           = require(`express`)
+   const app            = express()
+const http              = require(`http`)
+const path              = require(`path`)
 const {
-   showReg,
-   showRemainingDictionary,
-   showRemainingDictionaryLength,
-   showBestGuessWeight,
+   PORT,
+   HOSTNAME,
 }                       = require(`./misc/config.json`)
-const dictionary        = require(`./dictionary`)
-const {
-   bacon,
-   getPastGuesses,
-}                       = require(`./coolFunctions/regex`)
-const {
-   guess,
-}                       = require(`./coolFunctions/guess`)
-const {
-   wordStructure,
-   wrongGuesses,
-}                       = require(`./input`)
 
-// 1. Setup
-const pastGuesses       = getPastGuesses(wordStructure, wrongGuesses)
-const reg               = bacon(wordStructure, pastGuesses)
 
-// 2. Search dictionary for matches
-let reducedDictionary = dictionary.filter(word => reg.test(word[0]))
+// 1. Bodyparser
+app.use(express.urlencoded({ extended: false}))
+app.use(express.json())
 
-if(showReg) console.log(reg)
-if(showRemainingDictionary) console.log(reducedDictionary)
-if(showRemainingDictionaryLength) console.log(`Words remaining: `, reducedDictionary.length)
+// 2. Router
+app.use(require(`./routes/index`))
 
-if(reducedDictionary.length === 0) return console.timeEnd(`No more words in the dictionary`)
-if(reducedDictionary.length === 1) {
-   console.timeEnd(`Final guess`)
-   console.log(reducedDictionary[0])
-   return
-}
-
-// 3. Make guess
-const {weighted, plain} = guess(reducedDictionary, pastGuesses)
-console.timeEnd(`Optimal letter found in`)
-// console.log(
-//    `weighted:`, weighted[0],
-//    ...showBestGuessWeight? [bestGuessWeight]:[]
-// )
-
-console.log(weighted, plain)
+// 3. Start server (only listens to 127.0.0.1 (nginx) to prevent direct access via port 8080)
+http.createServer(app).listen(PORT, HOSTNAME, () => { 
+   console.log(`HTTP Server running on port ${PORT}`)
+})

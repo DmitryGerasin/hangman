@@ -1,4 +1,7 @@
-const letters = require(`../misc/letters.json`)
+const letters           = require(`../misc/letters.json`)
+const {
+   showLettersWeightsAfterGuessIsMade,
+}                       = require(`../misc/config.json`)
 
 /**
  * Function 
@@ -12,12 +15,12 @@ const guess = (dictionary, pastGuesses) => {
 
    const possibleGuessesWeighted = {}
    for (let i = 0; i < remainingLetters.length; i++) {
-      possibleGuessesWeighted[letters[i]] = 0
+      possibleGuessesWeighted[remainingLetters[i]] = 0
    }
 
    const possibleGuessesPlain = {}
    for (let i = 0; i < remainingLetters.length; i++) {
-      possibleGuessesPlain[letters[i]] = 0
+      possibleGuessesPlain[remainingLetters[i]] = 0
    }
 
    // calculate the success odds for guessing each letter
@@ -59,7 +62,7 @@ const guess = (dictionary, pastGuesses) => {
 
    const getPercentage = (n, total) => `${Math.round((n/total)*100*100)/100}%`
 
-   console.log(weightedLetters)
+   if(showLettersWeightsAfterGuessIsMade) console.log(weightedLetters)
 
    const output = {
       weighted: [weightedLetters[0][0], getPercentage(weightedLetters[0][1], totalWeight)],
