@@ -12,7 +12,7 @@
    **_Words in the dictionary must have meaning(s) beyond their component letters that are neither names nor abbreviations._**
 
 ### Excluded words
-   1. All single letter words except "I", "a", and "o". [source](https://english.stackexchange.com/questions/225537/one-letter-words-in-english-language "English StackExchange)
+   1. All single letter words except "I", "a", and "o". [source](https://english.stackexchange.com/questions/225537/one-letter-words-in-english-language "English StackExchange")
    2. There are 107 acceptable 2-letter words listed in the Official Scrabble Players Dictionary, 6th Edition (OSPD6), and the Official Tournament and Club Word List (OTCWL, or simply, TWL) [source](https://en.wikibooks.org/wiki/Scrabble/Two_Letter_Words "wikibooks")
       - Since most of these are still nonsense words - the 20 or so actual words among them should be heavily preferred
    3. There is some confusion with regard to 3-letter words
