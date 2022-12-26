@@ -1,4 +1,8 @@
-const letters = require(`../misc/letters.json`)
+import { 
+   createRequire 
+}                       from 'module'
+const require           = createRequire(import.meta.url)
+const letters           = require(`../misc/letters.json`)
 
 /**
  * @param {(null|string)[]} wordForm - Array of letters and null values representing the current state of the word being guessed.
@@ -42,7 +46,7 @@ const bacon = (wordForm, pastGuesses) => {
    return reg
 }
 
-module.exports = {
+export {
    bacon,
    getPastGuesses,
 }

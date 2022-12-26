@@ -1,3 +1,7 @@
+import { 
+   createRequire 
+}                       from 'module'
+const require           = createRequire(import.meta.url)
 const letters           = require(`../misc/letters.json`)
 const {
    showLettersWeightsAfterGuessIsMade,
@@ -73,6 +77,4 @@ const guess = (dictionary, pastGuesses) => {
    
 }
 
-module.exports = {
-   guess,
-}
+export default guess

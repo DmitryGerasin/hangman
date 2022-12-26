@@ -1,12 +1,16 @@
-const {
-   bacon,
-   getPastGuesses,
-}                       = require(`../coolFunctions/regex`)
+import { 
+   createRequire 
+}                       from 'module'
+   const require        = createRequire(import.meta.url)
+
+import { 
+   bacon, 
+   getPastGuesses 
+}                       from '../coolFunctions/regex.js'
 const dictionary        = require(`../dictionary`)
-const {
-   guess,
-}                       = require(`../coolFunctions/guess`)
-const router            = require(`express`).Router()
+import guess            from '../coolFunctions/guess.js'
+import express          from 'express'
+const router            = express.Router()
 const {
    showReg,
    showRemainingDictionary,
@@ -20,7 +24,7 @@ const {
 
 router.get(`/get-help/:wordStructure/:wrongGuesses`, makeGuess)
 
-module.exports = router
+export default router
 
 
 /*============================================================================

@@ -30,14 +30,20 @@
  */
 
 
-const express           = require(`express`)
-   const app            = express()
-const http              = require(`http`)
-const path              = require(`path`)
+import { 
+   createRequire 
+}                       from 'module'
+const require           = createRequire(import.meta.url)
 const {
    PORT,
    HOSTNAME,
 }                       = require(`./misc/config.json`)
+
+import express          from 'express'
+   const app            = express()
+import http             from 'http'
+import path             from 'path'
+import router           from './routes/index.js'
 
 
 // 1. Bodyparser
@@ -45,7 +51,7 @@ app.use(express.urlencoded({ extended: false}))
 app.use(express.json())
 
 // 2. Router
-app.use(require(`./routes/index`))
+app.use(router)
 
 // 3. Start server (only listens to 127.0.0.1 (nginx) to prevent direct access via port 8080)
 http.createServer(app).listen(PORT, HOSTNAME, () => { 
