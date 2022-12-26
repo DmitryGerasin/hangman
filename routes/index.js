@@ -47,8 +47,16 @@ function makeGuess(req, res) {
    if(showRemainingDictionary) console.log(reducedDictionary)
    if(showRemainingDictionaryLength) console.log(`Words remaining: `, reducedDictionary.length)
 
-   if(reducedDictionary.length === 0) return console.log(`No more words in the dictionary`)
-   if(reducedDictionary.length === 1) return console.log(`Final guess`, reducedDictionary[0])
+   if(reducedDictionary.length === 0) return res.send({
+      result: `No more words in the dictionary`,
+      wordStructure: wordStructure,
+      wrongGuesses: wrongGuesses,
+   })
+   if(reducedDictionary.length === 1) return res.send({
+      result: reducedDictionary[0][0],
+      wordStructure: wordStructure,
+      wrongGuesses: wrongGuesses,
+   })
 
    // 3. Make guess
    const {weighted, plain} = guess(reducedDictionary, pastGuesses)
@@ -56,7 +64,11 @@ function makeGuess(req, res) {
 
    if(showFinalAnswer) console.log(weighted, plain)
    res.send({
-      weighted: weighted,
-      plain: plain,
+      result: {
+         weighted: weighted,
+         plain: plain,
+      },
+      wordStructure: wordStructure,
+      wrongGuesses: wrongGuesses,
    })
 }
