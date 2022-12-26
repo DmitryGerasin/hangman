@@ -13,6 +13,7 @@
    - `dict_merge.ipynb` pools words and their weights form every file in that folder that is not index.json, eliminates duplicates with the lowest weights, generates the index.json file
       * words dictionaries with no weights have weight 1
    - `/misc` contains reference files
+   - `/successRateTest` runs the app on every work in the compiled dictionary and saves words it succeeded on and words in failed on to different files in json format
    - `/coolFunctions` is self explanatory
 
 ## Sources:

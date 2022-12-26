@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/DmitryGerasin/hangman#readme",
   "dependencies": {
+    "cli-progress": "^3.11.2",
     "express": "^4.18.2",
     "nodemon": "^2.0.20"
   }
