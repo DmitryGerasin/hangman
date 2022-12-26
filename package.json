@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "nodemon ./app.js",
+    "analysis": "node ./successRateTest/analyzeTestResults.js",
     "test": "cli-confirm \"Make sure to turn off all logging in ./misc/config.json before you proceed. \nContinue?\" && node ./successRateTest/failures.js"
   },
   "repository": {
